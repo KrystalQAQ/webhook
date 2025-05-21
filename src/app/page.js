@@ -4,7 +4,7 @@ import Dashboard from "@/components/Dashboard";
 export default async function Home() {
   try {
     const posts = await getPatrolList();
-    console.log(posts.data.rowDatas);
+    console.log(posts.data);
     // 模拟数据处理，实际项目中需要根据API返回的数据结构进行调整
     const dashboardData = {
       daily: posts.data.rowDatas?.length || 0,
