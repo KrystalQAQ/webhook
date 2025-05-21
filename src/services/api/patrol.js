@@ -9,13 +9,13 @@ let user = {
 
 // 日管控清单
 export async function getDayList() {
-  return request("https://api.krystal.fit/getDayList");
+  return request("https://api.krystal.fit/getDayList?token=2542532345");
 }
 // 日管控清单
 export async function getWeekList() {
-  return request("https://api.krystal.fit/getWeekList");
+  return request("https://api.krystal.fit/getWeekList?token=2542532345");
 }
 // 日管控清单
 export async function getMonthList() {
-  return request("https://api.krystal.fit/getMonthList");
+  return request("https://api.krystal.fit/getMonthList?token=2542532345");
 }
