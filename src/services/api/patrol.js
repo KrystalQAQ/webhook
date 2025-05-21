@@ -8,6 +8,14 @@ let user = {
 };
 
 // 日管控清单
-export async function getPatrolList() {
+export async function getDayList() {
   return request("https://api.krystal.fit/getDayList");
+}
+// 日管控清单
+export async function getWeekList() {
+  return request("https://api.krystal.fit/getWeekList");
+}
+// 日管控清单
+export async function getMonthList() {
+  return request("https://api.krystal.fit/getMonthList");
 }

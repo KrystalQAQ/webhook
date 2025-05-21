@@ -1,21 +1,29 @@
-import { getPatrolList } from "@/services/api/patrol";
+import { getDayList, getWeekList, getMonthList } from "@/services/api/patrol";
 import Dashboard from "@/components/Dashboard";
 
 // 确保页面始终是动态渲染的
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   try {
-    const posts = await getPatrolList();
+    const posts = await getDayList();
     const data = posts.data;
-    console.log(data);
 
+    const weekData = await getWeekList();
+    const monthData = await getMonthList();
+    console.log(data, weekData, monthData);
     if (data) {
       // 模拟数据处理，实际项目中需要根据API返回的数据结构进行调整
       const dashboardData = {
         daily: data.rowDatas?.length || 0,
-        weekly: Math.floor(posts?.length * 1.5) || 0,
-        monthly: Math.floor(posts?.length * 3) || 0,
+        weekly:
+          weekData.data.filter((item) => item.isDone).length +
+          "/" +
+          weekData.data.length,
+        monthly:
+          monthData.data.filter((item) => item.isDone).length +
+          "/" +
+          monthData.data.length,
         remaining: Math.floor(posts?.length * 0.8) || 0,
       };
 
