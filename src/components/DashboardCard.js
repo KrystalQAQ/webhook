@@ -12,7 +12,7 @@ const icons = {
   remaining: ListBulletIcon,
 };
 
-export default function DashboardCard({ title, value, type, loading = false }) {
+export default function DashboardCard({ title, value, type, loading = false, isCompleted = false }) {
   const Icon = icons[type];
 
   return (
@@ -20,7 +20,7 @@ export default function DashboardCard({ title, value, type, loading = false }) {
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium text-gray-600 dark:text-gray-400">{title}</p>
-          <p className="mt-2 text-3xl font-semibold text-gray-900 dark:text-white">
+          <p className={`mt-2 text-3xl font-semibold ${isCompleted ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
             {loading ? (
               <span className="animate-pulse">...</span>
             ) : (
@@ -28,8 +28,8 @@ export default function DashboardCard({ title, value, type, loading = false }) {
             )}
           </p>
         </div>
-        <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full">
-          <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+        <div className={`p-3 rounded-full ${isCompleted ? 'bg-green-100 dark:bg-green-900' : 'bg-red-100 dark:bg-red-900'}`}>
+          <Icon className={`h-6 w-6 ${isCompleted ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`} />
         </div>
       </div>
     </div>

@@ -14,18 +14,23 @@ export default async function Home() {
     console.log(data, weekData, monthData);
     if (data) {
       // 模拟数据处理，实际项目中需要根据API返回的数据结构进行调整
-      const dashboardData = {
-        daily: data.rowDatas?.length || 0,
-        weekly:
-          weekData.data.filter((item) => item.isDone).length +
-          "/" +
-          weekData.data.length,
-        monthly:
-          monthData.data.filter((item) => item.isDone).length +
-          "/" +
-          monthData.data.length,
-        remaining: Math.floor(posts?.length * 0.8) || 0,
-      };
+      const dashboardData = [
+        {
+          title: "日管控任务",
+          data: data.rowDatas,
+          type: "daily",
+        },
+        {
+          title: "周管控任务",
+          data: weekData.data,
+          type: "weekly",
+        },
+        {
+          title: "月管控任务",
+          data: monthData.data,
+          type: "monthly",
+        },
+      ];
 
       return (
         <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
