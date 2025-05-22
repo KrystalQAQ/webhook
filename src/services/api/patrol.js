@@ -22,3 +22,12 @@ export async function getMonthList() {
 export async function getStatus() {
   return request("https://api.krystal.fit/api/status?token=2542532345");
 }
+
+export async function updateCookie(cookie, pwd) {
+  return request(
+    "https://api.krystal.fit/updateCooike?token=2542532345&value=" +
+      cookie +
+      "&pwd=" +
+      pwd
+  );
+}

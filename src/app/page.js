@@ -5,6 +5,7 @@ import {
   getStatus,
 } from "@/services/api/patrol";
 import Dashboard from "@/components/Dashboard";
+import CookieUpdateButton from "@/components/CookieUpdateButton";
 
 // 确保页面始终是动态渲染的
 export const dynamic = "force-dynamic";
@@ -13,7 +14,7 @@ export default async function Home() {
   try {
     const data = await getStatus();
     console.log(data);
-    if (data) {
+    if (data.code === "200") {
       // 模拟数据处理，实际项目中需要根据API返回的数据结构进行调整
       const dashboardData = [
         {
@@ -82,9 +83,7 @@ export default async function Home() {
               <p className="text-gray-600 dark:text-gray-300 mb-6">
                 请点击下方按钮更新Cookie
               </p>
-              <button className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-200">
-                更新Cookie
-              </button>
+              <CookieUpdateButton />
             </div>
           </div>
         </main>
