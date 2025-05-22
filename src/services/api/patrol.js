@@ -19,3 +19,6 @@ export async function getWeekList() {
 export async function getMonthList() {
   return request("https://api.krystal.fit/getMonthList?token=2542532345");
 }
+export async function getStatus() {
+  return request("https://api.krystal.fit/api/status?token=2542532345");
+}
